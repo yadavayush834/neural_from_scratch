@@ -1,3 +1,10 @@
+
+def relu(x):
+    if x>0 : 
+        return x 
+    else :
+        return 0 
+
 def neuron(input,weights,bias):
     total = 0 
 
@@ -14,7 +21,6 @@ weights = [0.5,-0.2]
 
 bias = 0.1 
 
-output = neuron(input ,weights,bias)
+output = relu(neuron(input ,weights,bias))
 print(output)
-
 
