@@ -5,22 +5,34 @@ def relu(x):
     else :
         return 0 
 
-def neuron(input,weights,bias):
-    total = 0 
 
 
-    for i in range(len(input)):
-        total += weights[i] * input[i]
 
+def layer(inputs, weights, biases):
+    outputs = []
 
-    total += bias
-    return total 
+    for i in range(len(weights)):
+        total = 0
 
-input = [2,4]
-weights = [0.5,-0.2]
+        for j in range(len(inputs)):
+            total += inputs[j] * weights[i][j]
 
-bias = 0.1 
+        total += biases[i]
 
-output = relu(neuron(input ,weights,bias))
-print(output)
+        outputs.append(relu(total))
 
+    return outputs
+
+inputs = [2, 3]
+
+weights = [
+    [0.5, -0.2],   
+    [0.1, 0.4],    
+    [-0.3, 0.8]    
+]
+
+biases = [0.1, 0.2, -0.1]
+
+outputs = layer(inputs, weights, biases)
+
+print(outputs)
